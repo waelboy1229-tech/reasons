@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080608">
+<title>100 Reasons ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#080608;--deep:#14080e;--wine:#32101c;--wine2:#4b1828;--rose:#a84765;
+  --pink:#e6a5b7;--light:#fff2ef;--muted:#b99ca5;--gold:#ffd98d;--green:#6f8b62;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-height:100%;background:var(--black);color:var(--light);font-family:"Cormorant Garamond",serif}
+body{overflow-x:hidden}
+button,input,textarea{font:inherit}
+button{touch-action:manipulation}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.hidden{display:none!important}
+.screen{position:relative;z-index:2;min-height:100vh;display:none;align-items:center;justify-content:center;padding:30px 18px}
+.screen.active{display:flex;animation:screenIn .65s ease both}
+@keyframes screenIn{from{opacity:0;transform:scale(1.02)}to{opacity:1;transform:scale(1)}}
+.container{width:min(1050px,100%);text-align:center}
+.eyebrow{font:10px "DM Mono",monospace;letter-spacing:4px;text-transform:uppercase;color:var(--pink);opacity:.82;margin-bottom:18px}
+.sectionTitle{font-size:clamp(38px,6vw,70px);font-weight:500;line-height:.95}
+.sectionSub{max-width:650px;margin:12px auto 26px;color:var(--muted);font-size:18px;line-height:1.5}
+.script{font-family:"Great Vibes",cursive;color:var(--pink);font-size:clamp(55px,9vw,100px)}
+.startBtn,.nextBtn,.softBtn,.continueBtn{
+  border:1px solid rgba(230,165,183,.4);background:linear-gradient(135deg,rgba(168,71,101,.2),rgba(75,24,40,.48));
+  color:var(--light);padding:13px 27px;border-radius:999px;cursor:pointer;letter-spacing:1.8px;font:10px "DM Mono",monospace;
+  transition:.28s;box-shadow:0 0 35px rgba(168,71,101,.1)
+}
+.startBtn:hover,.nextBtn:hover,.softBtn:hover,.continueBtn:hover{transform:translateY(-3px);border-color:var(--pink);box-shadow:0 0 45px rgba(168,71,101,.25)}
+.continueBtn{background:transparent}
+.musicCorner{position:fixed;right:16px;bottom:16px;z-index:60;border:1px solid rgba(230,165,183,.18);background:rgba(8,6,8,.76);backdrop-filter:blur(12px);border-radius:999px;padding:9px 13px;color:var(--muted);font:10px "DM Mono",monospace;cursor:pointer}
+.musicCorner span{color:var(--pink)}
+#hearts,#particles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.heart{position:absolute;bottom:-40px;color:var(--pink);opacity:.15;animation:floatUp linear forwards}
+@keyframes floatUp{from{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:.18}90%{opacity:.12}to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--pink);opacity:0;animation:particleFloat linear infinite}
+@keyframes particleFloat{0%,100%{opacity:0;transform:translateY(30px)}50%{opacity:.45;transform:translateY(-30px)}}
+.toast{position:fixed;left:50%;bottom:28px;z-index:100;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:11px 16px;border:1px solid rgba(230,165,183,.2);border-radius:999px;background:rgba(20,8,14,.92);backdrop-filter:blur(10px);font:10px "DM Mono",monospace;color:var(--light);transition:.3s;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* intro */
+#introScreen{flex-direction:column;text-align:center}
+.introNumber{font-size:clamp(70px,15vw,170px);line-height:.72;font-weight:500}
+.intro p{max-width:560px;margin:30px auto 34px;color:var(--muted);font-size:19px;line-height:1.55}
+.lockedLine{font:9px "DM Mono",monospace;color:var(--muted);letter-spacing:2px;margin-top:18px;opacity:.7}
+
+/* journey */
+.journey{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:40;width:min(760px,calc(100% - 30px));display:grid;grid-template-columns:repeat(5,1fr);gap:6px;pointer-events:none}
+.journeyItem{position:relative;text-align:center;color:#624651;font:8px "DM Mono",monospace;letter-spacing:1px;transition:.35s}
+.journeyItem:before{content:"";display:block;height:2px;background:rgba(255,255,255,.08);margin-bottom:7px;border-radius:4px}
+.journeyItem.active{color:var(--pink)}
+.journeyItem.active:before{background:linear-gradient(90deg,var(--rose),var(--pink));box-shadow:0 0 10px rgba(230,165,183,.25)}
+
+/* envelopes */
+#envelopeScreen{align-items:flex-start;padding-top:76px;padding-bottom:45px}
+.envelopeWrap{width:min(1120px,100%);text-align:center}
+.envelopeGrid{display:grid;grid-template-columns:repeat(10,1fr);gap:10px;margin:28px auto 22px;max-width:1040px}
+.envelope{height:72px;position:relative;border:1px solid rgba(230,165,183,.16);border-radius:12px;background:linear-gradient(145deg,rgba(75,24,40,.72),rgba(20,8,14,.92));cursor:pointer;color:var(--pink);font:10px "DM Mono",monospace;transition:.28s;overflow:hidden}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,transparent 47%,rgba(230,165,183,.09) 48%,transparent 51%),linear-gradient(215deg,transparent 47%,rgba(230,165,183,.07) 48%,transparent 51%)}
+.envelope:after{content:"♡";position:absolute;right:8px;bottom:4px;font-size:11px;opacity:.45}
+.envelope:hover{transform:translateY(-4px) scale(1.03);border-color:var(--pink);box-shadow:0 8px 25px rgba(168,71,101,.2)}
+.envelope.opened{opacity:.38}
+.envelope b{position:relative;z-index:2;display:block;margin-top:28px}
+.gridBottom{font:10px "DM Mono",monospace;color:var(--muted);letter-spacing:1px}
+.envelopeHint{margin-top:14px;color:#7d626c;font:9px "DM Mono",monospace}
+
+/* envelope letter overlay */
+.overlay{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(4,2,4,.82);backdrop-filter:blur(10px)}
+.overlay.show{display:flex;animation:fade .3s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.envelopeLetter{width:min(600px,94vw);min-height:470px;position:relative;padding:52px 48px 42px;background:linear-gradient(145deg,#fff4ef,#ead4d1);color:#32101c;border-radius:6px;box-shadow:0 30px 100px rgba(0,0,0,.65);transform:rotate(-1.3deg);animation:letterPop .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes letterPop{from{opacity:0;transform:translateY(35px) scale(.9) rotate(4deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(-1.3deg)}}
+.envelopeLetter:before{content:"";position:absolute;inset:14px;border:1px solid rgba(75,24,40,.18);pointer-events:none}
+.letterTiny{font:9px "DM Mono",monospace;letter-spacing:3px;opacity:.55}
+.letterNum{font:72px "Cormorant Garamond",serif;line-height:.8;margin:25px 0 15px;color:#8e4158}
+.letterReason{font-size:clamp(27px,4vw,40px);line-height:1.15}
+.letterFrom{margin-top:35px;font-family:"Great Vibes",cursive;font-size:32px;color:#8e4158}
+.letterSeal{position:absolute;right:30px;bottom:22px;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#8e4158;color:#fff0eb;font-size:20px;box-shadow:0 7px 18px rgba(50,16,28,.25)}
+.overlayActions{display:flex;justify-content:center;gap:10px;margin-top:25px;position:relative;z-index:2}
+
+/* reason card */
+#reasonsScreen{align-items:flex-start;padding-top:76px;padding-bottom:45px}
+.reasonWrap{width:min(1050px,100%)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px;font:10px "DM Mono",monospace;color:var(--muted)}
+.counter{color:var(--pink);letter-spacing:1px}
+.progress{height:3px;background:rgba(255,255,255,.07);border-radius:10px;overflow:hidden;margin-bottom:20px}
+.progressFill{width:1%;height:100%;background:linear-gradient(90deg,var(--rose),var(--pink));transition:width .7s ease}
+.cardArea{min-height:calc(100vh - 145px);display:flex;align-items:center;justify-content:center}
+.reasonCard{position:relative;width:min(740px,94vw);min-height:480px;padding:60px 55px;display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px solid rgba(230,165,183,.2);border-radius:28px;background:radial-gradient(circle at 50% 20%,rgba(168,71,101,.17),transparent 40%),linear-gradient(145deg,rgba(75,24,40,.65),rgba(20,8,14,.94));box-shadow:0 30px 90px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
+.reasonCard:before{content:"";position:absolute;inset:13px;border:1px solid rgba(230,165,183,.08);border-radius:20px;pointer-events:none}
+.number{font:12px "DM Mono",monospace;color:var(--pink);letter-spacing:4px;margin-bottom:22px}
+.reason{position:relative;z-index:2;max-width:600px;font-size:clamp(28px,4vw,46px);line-height:1.13;font-weight:500}
+.reason:before{content:"“";display:block;font-family:Georgia,serif;font-size:75px;height:45px;color:var(--rose);opacity:.7}
+.nextBtn{margin-top:40px;padding:12px 23px;font-size:10px}
+.cardLeaving{animation:cardOut .3s ease forwards}
+@keyframes cardOut{to{opacity:0;transform:translateY(18px) scale(.97)}}
+.cardEntering{animation:cardIn .5s ease both}
+@keyframes cardIn{from{opacity:0;transform:translateY(-15px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* intermission */
+.intermission{flex-direction:column;text-align:center}
+.intermission .bigNum{font-size:clamp(85px,18vw,190px);line-height:.75;font-weight:500}
+.intermission p{max-width:650px;color:var(--muted);font-size:20px;line-height:1.55;margin:25px auto}
+.handwritten{width:min(580px,92vw);margin:22px auto 30px;padding:32px 28px;background:#f5e8df;color:#32101c;transform:rotate(-1deg);box-shadow:0 20px 60px rgba(0,0,0,.35);font-family:"Great Vibes",cursive;font-size:31px;line-height:1.25;position:relative}
+.handwritten:after{content:"♡";position:absolute;right:18px;bottom:10px;color:#a84765;font-family:serif;font-size:24px}
+.handwritten small{display:block;margin-top:18px;font:8px "DM Mono",monospace;letter-spacing:2px;color:#8e4158}
+
+/* memory */
+.memoryBox{display:flex;align-items:center;justify-content:center;gap:45px;flex-wrap:wrap;margin:28px 0}
+.polaroid{background:#fffaf7;padding:12px 12px 38px;box-shadow:0 20px 50px rgba(0,0,0,.4);transform:rotate(-3deg);color:#32101c;max-width:320px}
+.polaroid .placeholder,.polaroid img{width:290px;height:290px;object-fit:cover;display:grid;place-items:center;background:linear-gradient(145deg,#32101c,#a84765);font:12px "DM Mono",monospace;color:#fff2ef}
+.polaroid p{font-size:21px;margin-top:8px}
+.memoryWords{max-width:470px;text-align:left}
+.memoryWords h3{font-size:43px;font-weight:500;line-height:1}
+.memoryWords p{color:var(--muted);font-size:18px;line-height:1.5;margin-top:12px}
+
+/* final */
+#finalScreen{text-align:center}
+.finalContent{position:relative}
+.finalSmall{font:10px "DM Mono",monospace;letter-spacing:4px;color:var(--pink);margin-bottom:22px}
+.finalContent h2{font-size:clamp(70px,13vw,155px);line-height:.75;font-weight:500}
+.finalText{max-width:690px;margin:32px auto 0;font-size:clamp(21px,3vw,29px);line-height:1.35}
+.finalText strong{color:var(--pink);font-weight:600}
+.finalSub{max-width:590px;margin:18px auto 0;color:var(--muted);font-size:17px;line-height:1.5}
+.bouquet{margin:42px auto 25px;width:min(430px,78vw);min-height:170px;display:flex;align-items:flex-end;justify-content:center;position:relative}
+.flower{position:relative;width:72px;height:150px;transform-origin:bottom center;animation:bloom .9s cubic-bezier(.2,.8,.2,1) both}
+.flower:nth-child(1){transform:rotate(-25deg) scale(.85);animation-delay:.05s}.flower:nth-child(2){transform:rotate(-13deg);animation-delay:.16s}.flower:nth-child(3){transform:rotate(0deg) scale(1.12);animation-delay:.27s}.flower:nth-child(4){transform:rotate(13deg);animation-delay:.38s}.flower:nth-child(5){transform:rotate(25deg) scale(.85);animation-delay:.49s}
+@keyframes bloom{from{opacity:0;transform:translateY(30px) scale(.1)}to{opacity:1}}
+.stem{position:absolute;width:4px;height:105px;background:linear-gradient(var(--rose),#3b5a32);left:34px;bottom:0;border-radius:5px}
+.flowerHead{position:absolute;left:10px;top:8px;width:50px;height:50px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#ffd98d 0 13%,transparent 14%),radial-gradient(circle at 50% 8%,var(--pink) 0 22%,transparent 23%),radial-gradient(circle at 92% 50%,var(--pink) 0 22%,transparent 23%),radial-gradient(circle at 50% 92%,var(--pink) 0 22%,transparent 23%),radial-gradient(circle at 8% 50%,var(--pink) 0 22%,transparent 23%);filter:drop-shadow(0 5px 15px rgba(168,71,101,.3))}
+.leaf{position:absolute;width:35px;height:17px;background:#465f3a;border-radius:100% 0 100% 0;left:10px;bottom:47px;transform:rotate(-25deg)}.leaf.right{left:30px;bottom:67px;transform:scaleX(-1) rotate(-25deg)}
+.musicBox{margin:25px auto 0;width:min(440px,90vw);padding:14px 18px;border:1px solid rgba(230,165,183,.18);border-radius:18px;background:rgba(255,255,255,.025);font:10px "DM Mono",monospace;color:var(--muted);letter-spacing:1px}
+.musicBox span{color:var(--pink)}
+
+/* letter */
+.letterCard{width:min(720px,94vw);padding:55px 50px;text-align:left;background:linear-gradient(145deg,#fff4ef,#ead4d1);color:#32101c;box-shadow:0 30px 90px rgba(0,0,0,.5);position:relative;transform:rotate(-.5deg)}
+.letterCard:before{content:"";position:absolute;inset:14px;border:1px solid rgba(75,24,40,.18);pointer-events:none}
+.letterTitle{font-family:"Great Vibes",cursive;color:#8e4158;font-size:55px;margin-bottom:22px;text-align:center}
+.letterCard p{font-size:20px;line-height:1.55;margin:14px 0}.letterCard strong{color:#8e4158}.signature{font-family:"Great Vibes",cursive;font-size:35px;color:#8e4158;text-align:right;margin-top:28px}
+
+/* milestone screens */
+.milestoneBox{width:min(800px,94vw);text-align:center}
+.milestoneBox h2{font-size:clamp(48px,8vw,82px);font-weight:500;line-height:.95}
+.milestoneBox p{max-width:620px;margin:18px auto;color:var(--muted);font-size:19px;line-height:1.5}
+.testOptions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:28px auto 18px}.testResult{min-height:22px;color:var(--pink);font:11px "DM Mono",monospace}
+.testOptions button{border:1px solid rgba(230,165,183,.22);background:rgba(75,24,40,.55);color:var(--light);padding:13px 20px;border-radius:999px;cursor:pointer;font:10px "DM Mono",monospace;transition:.25s}.testOptions button:hover{border-color:var(--pink);transform:translateY(-2px)}
+
+/* museum */
+.museum{width:min(1000px,96vw);text-align:center}.museum h2{font-size:clamp(48px,8vw,82px);font-weight:500}.museum p{color:var(--muted);max-width:650px;margin:10px auto 24px;font-size:17px;line-height:1.45}
+.polaroidGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:30px auto}.polaroidSlot{background:#fffaf7;color:#32101c;padding:10px 10px 25px;box-shadow:0 18px 40px rgba(0,0,0,.35);transform:rotate(var(--r));transition:.3s;cursor:pointer}.polaroidSlot:hover{transform:rotate(0deg) translateY(-5px)}
+.polaroidSlot .ph,.polaroidSlot img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:linear-gradient(145deg,#32101c,#a84765);color:#fff2ef;display:grid;place-items:center;font:9px "DM Mono",monospace}.polaroidSlot p{margin-top:7px;font-size:18px}
+.photoViewer{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(4,2,4,.9);padding:20px}.photoViewer.show{display:flex}.photoViewerInner{max-width:850px;text-align:center}.photoViewer img{max-width:min(80vw,700px);max-height:72vh;object-fit:contain;border:8px solid #fffaf7;box-shadow:0 25px 80px #000}.photoViewer .caption{margin-top:15px;font-size:22px}.photoViewer .closePhoto{margin-top:15px}
+
+/* yara turn */
+.yourTurn{width:min(700px,94vw);text-align:center}.yourTurn h2{font-size:clamp(48px,8vw,82px);font-weight:500}.yourTurn p{max-width:580px;margin:15px auto;color:var(--muted);font-size:18px;line-height:1.5}.yourTurn textarea{width:100%;min-height:180px;margin-top:18px;resize:vertical;border:1px solid rgba(230,165,183,.2);border-radius:18px;background:rgba(255,255,255,.035);color:var(--light);padding:20px;font-size:19px;line-height:1.5}.savedReason{min-height:85px;margin-top:20px}.handNote{width:min(560px,90vw);margin:auto;padding:24px;background:#f5e8df;color:#32101c;font-family:"Great Vibes",cursive;font-size:30px;transform:rotate(-1deg);box-shadow:0 15px 40px rgba(0,0,0,.3)}.handNote small{display:block;margin-top:10px;font:8px "DM Mono",monospace;color:#8e4158;letter-spacing:2px}
+
+/* night */
+.night{background:radial-gradient(circle at 50% 45%,rgba(75,24,40,.3),transparent 38%),#030306;overflow:hidden}.nightStars{position:absolute;inset:0}.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff2ef;opacity:.5;animation:twinkle 2.5s ease-in-out infinite}.star.big{width:4px;height:4px}.moon{width:95px;height:95px;border-radius:50%;margin:0 auto 30px;background:#fff3dc;box-shadow:0 0 70px rgba(255,243,220,.18)}.nightTime{font:clamp(60px,12vw,120px) "DM Mono",monospace;letter-spacing:-5px;color:#fff3dc}.nightTitle{font-family:"Great Vibes",cursive;font-size:clamp(45px,8vw,78px);color:var(--pink)}
+@keyframes twinkle{0%,100%{opacity:.18;transform:scale(.8)}50%{opacity:.75;transform:scale(1.3)}}
+
+/* secret */
+.secretLock{width:min(560px,94vw);text-align:center}.secretLock h2{font-size:clamp(45px,8vw,78px);font-weight:500}.secretLock p{color:var(--muted);font-size:18px;margin:14px 0 18px}.secretInput{width:min(380px,90vw);padding:14px 18px;border:1px solid rgba(230,165,183,.2);border-radius:999px;background:rgba(255,255,255,.04);color:var(--light);text-align:center;font:12px "DM Mono",monospace}.clue{margin:18px auto 25px;color:#80636d;font:9px "DM Mono",monospace;line-height:1.8;max-width:440px}.clue button{border:0;background:none;color:var(--pink);cursor:pointer;text-decoration:underline}.lockMsg{height:22px;margin-top:13px;color:var(--pink);font:10px "DM Mono",monospace}
+
+/* glitch / 101 */
+.glitchScreen{background:#020102}.glitch{font:clamp(65px,13vw,150px);font-weight:500;letter-spacing:4px;animation:glitch .16s infinite}.wait{margin-top:25px;color:var(--muted);font:12px "DM Mono",monospace;min-height:18px}.dots{margin-top:10px;color:var(--pink);font:10px "DM Mono",monospace}
+@keyframes glitch{0%{transform:translate(0)}30%{transform:translate(2px,-1px)}60%{transform:translate(-2px,1px)}100%{transform:translate(0)}}
+.number101{font:clamp(90px,18vw,190px) "Cormorant Garamond",serif;line-height:.7}.reason101{font-size:clamp(27px,4vw,43px);margin-top:25px}.finalAction{margin-top:30px}
+
+
+/* real bouquet ending */
+#bouquetScreen{
+  background:
+    radial-gradient(circle at 50% 38%,rgba(168,71,101,.20),transparent 30%),
+    radial-gradient(circle at 50% 70%,rgba(230,165,183,.06),transparent 42%),
+    linear-gradient(180deg,#080608 0%,#12090f 100%);
+  overflow:hidden;
+}
+.realBouquetWrap{
+  width:min(820px,96vw);
+  text-align:center;
+  position:relative;
+  padding-top:8px;
+}
+.realBouquetWrap .eyebrow{
+  margin-bottom:8px;
+}
+.bouquetTitle{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(30px,4vw,48px);
+  color:var(--light);
+  letter-spacing:-.5px;
+}
+.bouquetSub{
+  max-width:510px;
+  margin:8px auto 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+.realBouquet{
+  width:min(650px,94vw);
+  height:470px;
+  margin:4px auto 0;
+  position:relative;
+  isolation:isolate;
+}
+.realBouquet::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:42px;
+  width:410px;
+  height:120px;
+  transform:translateX(-50%);
+  background:radial-gradient(ellipse,rgba(230,165,183,.13),transparent 68%);
+  filter:blur(10px);
+  z-index:0;
+}
+.realBouquet::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:35px;
+  width:330px;
+  height:150px;
+  transform:translateX(-50%);
+  clip-path:polygon(5% 0,95% 0,78% 100%,22% 100%);
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.10),transparent 18%,rgba(255,255,255,.08) 34%,transparent 52%,rgba(255,255,255,.08) 70%,transparent 86%),
+    linear-gradient(145deg,#d9c3c8,#f1e2e3 48%,#cdb5bc);
+  box-shadow:0 16px 35px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.16);
+  z-index:18;
+}
+.flowerReal{
+  position:absolute;
+  left:50%;
+  bottom:92px;
+  width:210px;
+  height:300px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  transform:
+    translateX(calc(-50% + var(--x)))
+    translateY(var(--y))
+    rotate(var(--r))
+    scale(var(--s));
+  transform-origin:50% 100%;
+  opacity:0;
+  animation:flowerBloom .9s cubic-bezier(.2,.9,.2,1) forwards;
+  animation-delay:var(--delay);
+  filter:drop-shadow(0 12px 13px rgba(0,0,0,.24));
+  z-index:var(--z);
+  pointer-events:none;
+}
+.flowerReal img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.flowerReal:nth-child(1){
+  --x:-188px;--y:28px;--r:-13deg;--s:.82;--delay:.05s;--z:7;
+}
+.flowerReal:nth-child(2){
+  --x:-105px;--y:0px;--r:-7deg;--s:.98;--delay:.16s;--z:10;
+}
+.flowerReal:nth-child(3){
+  --x:-28px;--y:-25px;--r:-2deg;--s:.94;--delay:.27s;--z:12;
+}
+.flowerReal:nth-child(4){
+  --x:48px;--y:-30px;--r:4deg;--s:.96;--delay:.38s;--z:11;
+}
+.flowerReal:nth-child(5){
+  --x:126px;--y:2px;--r:9deg;--s:.88;--delay:.49s;--z:9;
+}
+.flowerReal:nth-child(6){
+  --x:-8px;--y:48px;--r:-4deg;--s:.72;--delay:.60s;--z:14;
+}
+.flowerReal:nth-child(7){
+  --x:150px;--y:58px;--r:13deg;--s:.46;--delay:.71s;--z:15;
+}
+@keyframes flowerBloom{
+  0%{
+    opacity:0;
+    transform:
+      translateX(calc(-50% + var(--x)))
+      translateY(calc(var(--y) + 28px))
+      rotate(calc(var(--r) - 7deg))
+      scale(calc(var(--s) * .72));
+  }
+  70%{
+    opacity:1;
+  }
+  100%{
+    opacity:1;
+    transform:
+      translateX(calc(-50% + var(--x)))
+      translateY(var(--y))
+      rotate(var(--r))
+      scale(var(--s));
+  }
+}
+.bouquetStem{
+  position:absolute;
+  left:50%;
+  bottom:55px;
+  width:170px;
+  height:100px;
+  transform:translateX(-50%);
+  z-index:19;
+  pointer-events:none;
+}
+.bouquetStem::before,
+.bouquetStem::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:7px;
+  height:125px;
+  border-radius:99px;
+  background:linear-gradient(90deg,#1b4025,#315d35,#17341f);
+  transform-origin:bottom;
+}
+.bouquetStem::before{left:42%;transform:rotate(-10deg)}
+.bouquetStem::after{left:57%;transform:rotate(10deg)}
+.bouquetRibbon{
+  position:absolute;
+  left:50%;
+  bottom:66px;
+  width:118px;
+  height:45px;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#8d3152,#bd5877 50%,#7a2947);
+  border-radius:10px 10px 18px 18px;
+  box-shadow:0 8px 18px rgba(0,0,0,.32);
+  z-index:22;
+}
+.bouquetRibbon::before,
+.bouquetRibbon::after{
+  content:"";
+  position:absolute;
+  top:22px;
+  width:65px;
+  height:78px;
+  background:linear-gradient(145deg,#9a3b5a,#6e2441);
+  clip-path:polygon(50% 0,100% 12%,78% 100%,48% 75%,0 100%,15% 18%);
+  transform-origin:top center;
+}
+.bouquetRibbon::before{right:74px;transform:rotate(13deg)}
+.bouquetRibbon::after{left:74px;transform:scaleX(-1) rotate(13deg)}
+.bouquetHeart{
+  position:absolute;
+  left:50%;
+  bottom:100px;
+  transform:translateX(-50%);
+  z-index:23;
+  color:#fff5f6;
+  font-size:23px;
+  text-shadow:0 0 14px rgba(255,255,255,.35);
+}
+.bouquetTag{
+  position:absolute;
+  left:50%;
+  bottom:87px;
+  transform:translateX(-50%) rotate(-2deg);
+  z-index:24;
+  background:#f8eee9;
+  color:#654854;
+  padding:8px 18px;
+  min-width:170px;
+  box-shadow:0 5px 14px rgba(0,0,0,.25);
+  font:9px "DM Mono",monospace;
+  letter-spacing:2px;
+}
+.bouquetMusic{
+  width:min(440px,88vw);
+  margin:-3px auto 14px;
+  padding:12px 16px;
+  border:1px solid rgba(230,165,183,.20);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  backdrop-filter:blur(12px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+  color:var(--muted);
+  font:10px "DM Mono",monospace;
+  letter-spacing:1px;
+}
+.vinyl{
+  width:42px;
+  height:42px;
+  flex:0 0 42px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,#e6a5b7 0 9%,#14080e 10% 18%,#32101c 19% 48%,#080608 49%);
+  box-shadow:0 0 0 2px rgba(230,165,183,.16);
+  animation:spin 3s linear infinite;
+  animation-play-state:paused;
+}
+.vinyl.playing{animation-play-state:running}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bouquetMusic strong{color:var(--pink);font-weight:500}
+
+@media(max-width:600px){
+  .realBouquetWrap{padding-top:2px}
+  .bouquetTitle{font-size:32px}
+  .bouquetSub{font-size:12px;line-height:1.55;max-width:330px}
+  .realBouquet{
+    width:100vw;
+    height:390px;
+    margin-top:0;
+  }
+  .flowerReal{
+    width:145px;
+    height:220px;
+    bottom:78px;
+  }
+  .flowerReal:nth-child(1){--x:-108px;--y:26px;--r:-12deg;--s:.76}
+  .flowerReal:nth-child(2){--x:-62px;--y:0px;--r:-7deg;--s:.88}
+  .flowerReal:nth-child(3){--x:-15px;--y:-12px;--r:-2deg;--s:.84}
+  .flowerReal:nth-child(4){--x:32px;--y:-16px;--r:4deg;--s:.86}
+  .flowerReal:nth-child(5){--x:79px;--y:2px;--r:9deg;--s:.79}
+  .flowerReal:nth-child(6){--x:-4px;--y:39px;--r:-3deg;--s:.65}
+  .flowerReal:nth-child(7){--x:94px;--y:45px;--r:12deg;--s:.40}
+  .realBouquet::after{
+    bottom:31px;
+    width:275px;
+    height:130px;
+  }
+  .bouquetStem{bottom:48px;transform:translateX(-50%) scale(.86)}
+  .bouquetRibbon{bottom:55px;transform:translateX(-50%) scale(.82)}
+  .bouquetHeart{bottom:83px;font-size:19px}
+  .bouquetTag{bottom:71px;min-width:150px;padding:7px 12px;font-size:8px}
+  .bouquetMusic{margin-top:-5px}
+}
+/* secret messages */
+.secretDot{position:fixed;z-index:45;width:7px;height:7px;border-radius:50%;background:rgba(230,165,183,.12);cursor:pointer;transition:.3s}.secretDot:hover{background:var(--pink);transform:scale(1.5)}
+
+@media(max-width:850px){
+  .envelopeGrid{grid-template-columns:repeat(5,1fr);gap:8px}.polaroidGrid{grid-template-columns:repeat(2,1fr)}
+  .reasonCard{min-height:430px;padding:50px 30px}.journey{top:10px}.journeyItem{font-size:7px}
+}
+@media(max-width:520px){
+  .screen{padding:24px 14px}.journey{width:calc(100% - 20px);gap:3px}.journeyItem{font-size:6px;letter-spacing:.4px}.journeyItem:before{margin-bottom:5px}
+  .envelopeGrid{grid-template-columns:repeat(4,1fr);gap:7px}.envelope{height:64px}.envelope b{margin-top:24px;font-size:9px}
+  #envelopeScreen,#reasonsScreen{padding-top:60px}.sectionSub{font-size:16px}.reasonCard{width:96vw;min-height:400px;padding:48px 22px;border-radius:22px}.reason{font-size:28px}.reason:before{font-size:60px;height:38px}.nextBtn{margin-top:28px}
+  .envelopeLetter{min-height:430px;padding:45px 28px 35px}.letterNum{font-size:58px}.letterReason{font-size:27px}.letterFrom{font-size:28px}.letterSeal{right:20px;bottom:18px}
+  .memoryBox{gap:25px}.polaroid{max-width:285px}.polaroid .placeholder,.polaroid img{width:255px;height:255px}.memoryWords{text-align:center}.memoryWords h3{font-size:37px}.memoryWords p{font-size:17px}
+  .polaroidGrid{grid-template-columns:1fr 1fr;gap:12px}.polaroidSlot{padding:7px 7px 17px}.polaroidSlot p{font-size:14px}
+  .letterCard{padding:45px 28px}.letterCard p{font-size:18px}.letterTitle{font-size:45px}.signature{font-size:30px}
+  .testOptions{flex-direction:column;align-items:stretch}.testOptions button{width:100%}.nightTime{letter-spacing:-3px}.moon{width:72px;height:72px}
+  .musicCorner{right:10px;bottom:10px}.toast{max-width:90vw;white-space:normal;text-align:center}
+}
+@media(max-width:380px){.envelopeGrid{grid-template-columns:repeat(4,1fr);gap:6px}.envelope{height:60px}.reason{font-size:25px}.polaroidGrid{gap:9px}}
+</style>
+</head>
+<body>
+<div id="hearts"></div><div id="particles"></div>
+<div class="toast" id="toast"></div>
+<button class="musicCorner hidden" id="musicToggle" onclick="toggleMusic()">♫ <span id="musicText">music</span></button>
+<audio id="ourSong" src="yoursong.mp3" loop preload="auto"></audio>
+
+<div class="journey" id="journey" aria-hidden="true">
+  <div class="journeyItem active" data-step="0">OPEN</div>
+  <div class="journeyItem" data-step="1">THE 100</div>
+  <div class="journeyItem" data-step="2">MEMORIES</div>
+  <div class="journeyItem" data-step="3">THE SECRET</div>
+  <div class="journeyItem" data-step="4">THE END</div>
+</div>
+
+<section class="screen active" id="introScreen">
+  <div class="container">
+    <div class="eyebrow">A little something for Yara</div>
+    <div class="introNumber">100</div>
+    <div class="script">reasons</div>
+    <p>There are probably a million things I could say, but I tried to narrow it down to just 100.<br><br>Some are big. Some are ridiculously small. All of them are yours.</p>
+    <button class="startBtn" onclick="begin()">OPEN MY HEART ♡</button>
+    <div class="lockedLine">made slowly. meant completely.</div>
+  </div>
+</section>
+
+<section class="screen" id="envelopeScreen">
+  <div class="envelopeWrap">
+    <div class="eyebrow">chapter one · the little things</div>
+    <h1 class="sectionTitle">100 little letters</h1>
+    <p class="sectionSub">Every envelope holds one thing I love about you. Pick any one, or let the numbers take you from the beginning.</p>
+    <div class="envelopeGrid" id="envelopeGrid"></div>
+    <div class="gridBottom" id="gridBottom">0 / 100 opened</div>
+    <div class="envelopeHint">you can open them in any order ♡</div>
+  </div>
+</section>
+
+<section class="screen" id="reasonsScreen">
+  <div class="reasonWrap">
+    <div class="topbar"><span>THE 100</span><span class="counter" id="counter">01 / 100</span></div>
+    <div class="progress"><div class="progressFill" id="progressFill"></div></div>
+    <div class="cardArea">
+      <div class="reasonCard" id="reasonCard">
+        <div class="number" id="number">REASON 01</div>
+        <div class="reason" id="reason"></div>
+        <button class="nextBtn" id="nextBtn" onclick="nextReason()">NEXT REASON →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screen intermission" id="intermissionScreen">
+  <div class="container">
+    <div class="eyebrow" id="interEyebrow">20 DOWN</div>
+    <div class="bigNum" id="interNum">20</div>
+    <div class="script">a little pause.</div>
+    <div class="handwritten" id="interNote"></div>
+    <button class="continueBtn" onclick="continueMilestone()">KEEP GOING ♡</button>
+  </div>
+</section>
+
+<section class="screen" id="memoryScreen">
+  <div class="container">
+    <div class="eyebrow">A MEMORY I KEEP</div>
+    <div class="memoryBox">
+      <div class="polaroid">
+        <img id="memoryPhoto" src="assets/yara3.jpg" alt="a memory with Yara">
+        <p id="memoryCaption">one of my favorites ♡</p>
+      </div>
+      <div class="memoryWords">
+        <h3 id="memoryTitle">Some moments deserve to stay.</h3>
+        <p id="memoryText">Not because they were perfect. Just because they were ours.</p>
+      </div>
+    </div>
+    <button class="continueBtn" onclick="continueMilestone()">BACK TO THE REASONS ♡</button>
+  </div>
+</section>
+
+<section class="screen" id="testScreen">
+  <div class="milestoneBox">
+    <div class="eyebrow">REASON 50 · LOVE TEST</div>
+    <h2>How much do I love you?</h2>
+    <p>Be honest. There is only one emotionally correct answer.</p>
+    <div class="testOptions">
+      <button onclick="testAnswer(0)">a lot</button>
+      <button onclick="testAnswer(1)">a LOT</button>
+      <button onclick="testAnswer(2)">STUPIDLY MUCH</button>
+    </div>
+    <div class="testResult" id="testResult"></div>
+    <button class="softBtn" id="testContinue" onclick="continueMilestone()" style="margin-top:18px">continue ♡</button>
+  </div>
+</section>
+
+<section class="screen" id="museumScreen">
+  <div class="museum">
+    <div class="eyebrow">REASON 80 · OUR LITTLE MUSEUM</div>
+    <h2>tiny pieces of you</h2>
+    <p>Six little windows into memories I don't want to lose. Tap one to make it bigger.</p>
+    <div class="polaroidGrid" id="museumGrid"></div>
+    <button class="softBtn" onclick="goToYourTurn()">one last thing...</button>
+  </div>
+</section>
+
+<section class="screen" id="yourTurnScreen">
+  <div class="yourTurn">
+    <div class="eyebrow">YARA'S TURN</div>
+    <h2>Give me one reason.</h2>
+    <p>A memory, a joke, something you love, something stupid — anything you want me to keep.</p>
+    <textarea id="yaraReason" placeholder="type it here... ♡"></textarea>
+    <button class="softBtn" onclick="saveYaraReason()" style="margin-top:14px">KEEP THIS FOREVER</button>
+    <div class="savedReason" id="savedReason"></div>
+    <button class="continueBtn" onclick="continueFromYaraTurn()" style="margin-top:18px">I HAVE ONE MORE THING FOR YOU →</button>
+  </div>
+</section>
+
+<section class="screen night" id="nightScreen">
+  <div class="nightStars" id="nightStars"></div>
+  <div style="position:relative;z-index:2;text-align:center;width:100%">
+    <div class="moon" id="moonClue" onclick="tapMoon()" title="..."> </div>
+    <div class="eyebrow" style="margin-bottom:10px">REASON 90 · ONE LAST PAUSE</div>
+    <div class="nightTime">01:03 AM</div>
+    <div class="nightTitle">still thinking about you.</div>
+    <p style="max-width:560px;margin:24px auto;color:var(--muted);font:14px 'DM Mono',monospace;line-height:1.9">even after all those reasons, somehow my brain still finds new ones.</p>
+    <div class="clue" id="nightClue">the last door has a key.<br>tap the moon three times if you want a clue.</div>
+    <button class="continueBtn" onclick="continueMilestone()">KEEP GOING →</button>
+  </div>
+</section>
+
+<section class="screen" id="lockScreen">
+  <div class="secretLock">
+    <div class="eyebrow">PRIVATE MESSAGE</div>
+    <h2>you found the last door.</h2>
+    <p>You made it through all 100. Now enter the word the moon tried to give you.</p>
+    <input class="secretInput" id="secretInput" type="password" placeholder="secret..." autocomplete="off" onkeydown="if(event.key==='Enter')unlockSecret()">
+    <div class="clue">hint: it is the name at the center of this whole thing.</div>
+    <button class="softBtn" onclick="unlockSecret()">UNLOCK ♡</button>
+    <div class="lockMsg" id="lockMsg"></div>
+  </div>
+</section>
+
+<section class="screen glitchScreen" id="glitchScreen">
+  <div style="text-align:center">
+    <div class="glitch">THE END ♡</div>
+    <div class="wait" id="waitText"></div>
+    <div class="dots" id="glitchDots"></div>
+  </div>
+</section>
+
+<section class="screen" id="screen101">
+  <div class="container" style="text-align:center">
+    <div class="eyebrow">you thought it was over</div>
+    <div class="number101">101</div>
+    <div class="script">one more.</div>
+    <div class="reason101">Because I could never stop at 100.</div>
+    <button class="softBtn finalAction" onclick="showBouquet()">okay, now the real ending ♡</button>
+  </div>
+</section>
+
+
+<section class="screen" id="bouquetScreen">
+  <div class="realBouquetWrap">
+    <div class="eyebrow">THE REAL ENDING · FOR YARA</div>
+    <div class="bouquetTitle">a little something for you.</div>
+    <p class="bouquetSub">You made it through all 100 reasons. So I wanted to leave you with something you can actually keep looking at.</p>
+
+    <div class="realBouquet" aria-label="a bouquet of seven flowers">
+      <div class="bouquetBackGlow"></div>
+      <div class="flowerReal"><img src="assets/flowers/flower1.png" alt="flower"></div>
+      <div class="flowerReal"><img src="assets/flowers/flower2.png" alt="flower"></div>
+      <div class="flowerReal"><img src="assets/flowers/flower3.png" alt="flower"></div>
+      <div class="flowerReal"><img src="assets/flowers/flower4.png" alt="flower"></div>
+      <div class="flowerReal"><img src="assets/flowers/flower5.png" alt="flower"></div>
+      <div class="flowerReal"><img src="assets/flowers/flower6.png" alt="flower"></div>
+      <div class="flowerReal"><img src="assets/flowers/flower7.png" alt="flower"></div>
+      <div class="flowerStem"></div><div class="flowerStem"></div><div class="flowerStem"></div><div class="flowerStem"></div><div class="flowerStem"></div><div class="flowerStem"></div><div class="flowerStem"></div>
+      <div class="bouquetLeaf l1"></div><div class="bouquetLeaf l2"></div><div class="bouquetLeaf l3"></div><div class="bouquetLeaf l4"></div><div class="bouquetLeaf l5"></div>
+      <div class="bouquetWrapPaper"></div>
+      <div class="bouquetRibbon"></div>
+      <div class="bouquetHeart">♡</div>
+      <div class="bouquetTag">FOR YARA · WITH LOVE</div>
+      <div class="bouquetTag">for yara · with love</div>
+    </div>
+
+
+    <button class="nextBtn" onclick="showLetter()">ONE LAST LETTER ♡</button>
+  </div>
+</section>
+
+<section class="screen" id="finalScreen">
+  <div class="container finalContent">
+    <div class="finalSmall">THE ACTUAL ENDING</div>
+    <h2>100</h2><div class="script">reasons</div>
+    <p class="finalText">And somehow, after all of that, <strong>100 still doesn't feel like enough.</strong></p>
+    <p class="finalSub">So here's the truth behind every reason: I could keep writing forever and still find another little thing about you to love.</p>
+    <div class="bouquet">
+      <div class="flower"><div class="stem"></div><div class="leaf"></div><div class="flowerHead"></div></div>
+      <div class="flower"><div class="stem"></div><div class="leaf right"></div><div class="flowerHead"></div></div>
+      <div class="flower"><div class="stem"></div><div class="leaf"></div><div class="flowerHead"></div></div>
+      <div class="flower"><div class="stem"></div><div class="leaf right"></div><div class="flowerHead"></div></div>
+      <div class="flower"><div class="stem"></div><div class="leaf"></div><div class="flowerHead"></div></div>
+    </div>
+    <div class="musicBox">♫ <span>your song</span> — playing because of course there had to be music.</div>
+    <button class="nextBtn" onclick="showLetter()" style="margin-top:22px">ONE MORE THING...</button>
+  </div>
+</section>
+
+<section class="screen" id="letterScreen">
+  <div class="container">
+    <div class="letterCard">
+      <div class="letterTitle">one more thing...</div>
+      <p>If you somehow made it all the way here, then I guess I owe you one last thing.</p>
+      <p>None of these 100 reasons were really separate reasons. They all lead back to the same thing: <strong>you.</strong></p>
+      <p>I love the little things, the big things, the memories, the chaos, the quiet moments, the laughs, and every version of you in between.</p>
+      <p>And if I had to write another hundred reasons tomorrow, I'd find another hundred.</p>
+      <p>So don't ever think you have to be anything other than yourself for me to love you.</p>
+      <p>You're already more than enough.</p>
+      <div class="signature">I love you, Yara ♡</div>
+    </div>
+  </div>
+</section>
+
+<div class="overlay" id="letterOverlay" aria-hidden="true">
+  <div class="envelopeLetter">
+    <div class="letterTiny">A LITTLE LETTER FROM WAEL</div>
+    <div class="letterNum" id="overlayNumber">01</div>
+    <div class="letterReason" id="overlayReason"></div>
+    <div class="letterFrom">for Yara ♡</div>
+    <div class="letterSeal">♡</div>
+    <div class="overlayActions">
+      <button class="softBtn" onclick="closeEnvelopeLetter()">KEEP READING →</button>
+    </div>
+  </div>
+</div>
+
+<div class="photoViewer" id="photoViewer" onclick="closePhotoViewer(event)">
+  <div class="photoViewerInner">
+    <img id="viewerImg" src="" alt="">
+    <div class="caption" id="viewerCaption"></div>
+    <button class="softBtn closePhoto" onclick="closePhotoViewer()">CLOSE ♡</button>
+  </div>
+</div>
+
+<script>
+const reasons = [
+  "I love the way you make ordinary moments feel like memories I want to keep forever.",
+  "I love how being around you makes the world feel a little quieter.",
+  "I love the way your presence can change my entire mood without you even trying.",
+  "I love how you somehow became one of the first people I want to tell everything to.",
+  "I love that I can be completely myself around you.",
+  "I love the way you make me feel understood, even when I don't know how to explain what I'm feeling.",
+  "I love your smile, especially when you don't realize you're smiling.",
+  "I love your laugh because I could hear it a thousand times and still want to hear it again.",
+  "I love the little things you do that you probably don't even realize I notice.",
+  "I love how you can make me miss you even when we've only been apart for a little while.",
+  "I love how comfortable silence feels when it's with you.",
+  "I love that talking to you never feels like something I have to force.",
+  "I love the way you make me feel wanted.",
+  "I love how one message from you can completely change my day.",
+  "I love the way you care, even when you pretend something doesn't matter that much.",
+  "I love how there are parts of you that only come out when you're completely comfortable.",
+  "I love getting to know the little pieces of your personality that not everyone gets to see.",
+  "I love how your happiness genuinely makes me happy.",
+  "I love when you're eyes lit up when i make you laugh",
+  "I love how you make me want to become a better version of myself.",
+  "I love the way you make me feel like I belong somewhere.",
+  "I love that you can make me feel close to you even when you're far away.",
+  "I love every random conversation we've ever had that somehow turned into one of my favorite memories.",
+  "I love how naturally you became part of my everyday thoughts.",
+  "I love that sometimes I'll see something completely random and immediately think, \"I need to show Yara this.\"",
+  "I love how you gave so many ordinary days a reason to mean something to me.",
+  "I love you're silly jokes even when i tell you to never repeat them again ",
+  "I love how much meaning there is in the smallest moments with you.",
+  "I love remembering the beginning of us and realizing how far we've come.",
+  "I love that I can look back at old conversations and still smile.",
+  "I love how you're kisses makes me wanna treat you better",
+  "I love your little habits, even the ones you probably think are annoying.",
+  "I love your imperfections because they make you you.",
+  "I love that I don't need you to be perfect to love you this much.",
+  "I love the way you start screaming 3eb 3eb when i make a silly joke",
+  "I love how you have a way of making me laugh when I wasn't even in the mood to smile.",
+  "I love the way you say things that randomly stay in my head for hours.",
+  "I love how soft you're voice becomes when you're sleepy",
+  "I love the way your name can instantly make me smile.",
+  "I love how much of you exists in my favorite memories now.",
+  "I love the way you prounuce my name.",
+  "I love how naturally I care about the things that matter to you.",
+  "I love knowing that there are still so many things about you I haven't discovered yet.",
+  "I love that I get to keep learning you.",
+  "I love how every new memory gives me another reason to miss you when you're gone.",
+  "I love that I can tell you things I wouldn't know how to tell anyone else.",
+  "I love the trust we've built between us.",
+  "I love how you made me completely vulnerable around you",
+  "I love that I can admit when I'm wrong with you and still feel loved.",
+  "I love that you see sides of me that I don't show everyone.",
+  "I love how much comfort I find in simply knowing you're there.",
+  "I love the way you get excited when you text me omg wael",
+  "I love the anticipation before we talk, even when we've talked a hundred times before.",
+  "I love how sometimes i still get shy when you compliment me",
+  "I love how you're eyes still shine even with you're glasses on",
+  "I love that you're voice makes me forget my entire long day",
+  "I love how you get thrilled when i tell you something i like",
+  "I love how you take long eating",
+  "I love that even tho we're arguing you still tell me that you love me",
+  "I love the thought of all the memories we haven't made yet.",
+  "I love that I can imagine growing with you instead of just being with you.",
+  "I love how you make the future feel like something I can actually get excited about.",
+  "I love knowing there are still countless versions of us that haven't happened yet.",
+  "I love the idea of meeting you again and again in all the different chapters of our lives.",
+  "I love when you take care of me and act like my mother",
+  "I love how much potential there is in every ordinary day we haven't lived yet.",
+  "I love imagining all the stupid little things we'll someday look back on and laugh about.",
+  "I love how you suddenly text me that you miss me",
+  "I love the idea that someday we'll look back at who we are now and realize how much we've grown.",
+  "I love that somehow, out of all the people in the world, our lives crossed.",
+  "I love that I met you when I did.",
+  "I love every coincidence that somehow led me to you.",
+  "I love the moment i joined the groupchat and looked at you're pfp",
+  "I love how something that started so simply became something so important to me.",
+  "I love that I get to call you my person.",
+  "I love how much one person can mean to another, because you showed me.",
+  "I love that caring about you feels effortless.",
+  "I love how protective I feel over your happiness.",
+  "I love when you bring up you're childhood stories",
+  "I love you're little blanket that you just found",
+  "I love how you take care of your family",
+  "I love how relaible you are",
+  "I love you when we're laughing until we can't breathe.",
+  "I love you when neither of us knows what to say.",
+  "I love you're little silly attiude after arguments",
+  "I love the way you gasp or get suprised when i do something for you",
+  "I love how much you reject me when i wanna offer something",
+  "I love how much fun we have when we are doing anything together",
+  "I love that beneath everything, I genuinely care about you as a person.",
+  "I love how calm you can make me even if im insanely mad",
+  "I love the way loving you has changed the way I understand love itself.",
+  "I love that you taught me how powerful the smallest moments can be when they're shared with the right person.",
+  "I love how funny you are",
+  "I love that sometimes I look at you and still can't believe you're actually part of my life.",
+  "I love that no matter how many words I use, they never quite feel like enough.",
+  "I love you're cute pajamas ",
+  "I love saying you're name",
+  "I love you for the person you are when you're happy, tired, excited, annoyed, silly, quiet, and completely yourself.",
+  "I love that after writing 99 reasons, I still don't feel anywhere close to finished.",
+  "I love you because you're you. Not because of one thing you do, one way you look, or one moment we shared. I love the whole person behind all of it — and somehow, a hundred reasons still aren't enough to explain what you mean to me."
+];
+
+const $ = id => document.getElementById(id);
+const screens = Array.from(document.querySelectorAll('.screen'));
+const audio = $('ourSong');
+const milestoneDone = new Set();
+const opened = new Set();
+let current = 0;
+let pendingMilestone = null;
+let envelopeReturn = 'envelopes';
+let moonTaps = 0;
+let toastTimer = null;
+
+const milestoneInfo = {
+  20:{screen:'intermissionScreen',step:1,note:'Twenty down. And somehow I already have more to say. I notice so much about you — even the tiny things you probably think nobody notices.', eyebrow:'20 DOWN'},
+  40:{screen:'intermissionScreen',step:1,note:'Forty. I hope you know how much of this list is made from tiny moments. The things that seem small to you are sometimes the things I remember the longest.', eyebrow:'40 DOWN'},
+  50:{screen:'testScreen',step:1},
+  60:{screen:'memoryScreen',step:2},
+  80:{screen:'museumScreen',step:2},
+  90:{screen:'nightScreen',step:3}
+};
+
+function showScreen(id){
+  screens.forEach(s=>s.classList.remove('active'));
+  const el=typeof id==='string'?$(id):id;
+  if(el) el.classList.add('active');
+  if($('bouquetVinyl') && (!el || el.id!=='bouquetScreen')) $('bouquetVinyl').classList.remove('playing');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function setJourney(step){
+  document.querySelectorAll('.journeyItem').forEach(x=>x.classList.toggle('active',Number(x.dataset.step)===step));
+}
+function begin(){
+  setJourney(1); showScreen('envelopeScreen'); $('musicToggle').classList.remove('hidden');
+  audio.volume=.35;
+  audio.play().then(()=>{$('musicText').textContent='playing'}).catch(()=>showToast('tap the music button if you want the song ♫'));
+}
+function buildEnvelopes(){
+  const grid=$('envelopeGrid'); grid.innerHTML='';
+  reasons.forEach((_,i)=>{
+    const b=document.createElement('button'); b.className='envelope'; b.dataset.index=i;
+    b.innerHTML='<b>'+String(i+1).padStart(2,'0')+' ♡</b>';
+    b.onclick=()=>openEnvelope(i,b); grid.appendChild(b);
+  });
+}
+function openEnvelope(i,b){
+  current=i; opened.add(i); if(b)b.classList.add('opened');
+  $('gridBottom').textContent=opened.size+' / 100 opened';
+  setJourney(1);
+  $('overlayNumber').textContent=String(i+1).padStart(2,'0');
+  $('overlayReason').textContent=reasons[i];
+  envelopeReturn='envelopes';
+  $('letterOverlay').classList.add('show'); $('letterOverlay').setAttribute('aria-hidden','false');
+}
+function closeEnvelopeLetter(){
+  $('letterOverlay').classList.remove('show'); $('letterOverlay').setAttribute('aria-hidden','true');
+  openReason(current,false);
+}
+function openReason(index,animate=true){
+  current=Math.max(0,Math.min(99,index));
+  setJourney(1); showScreen('reasonsScreen'); renderReason(animate);
+}
+function renderReason(animated=true){
+  const n=current+1, card=$('reasonCard');
+  const update=()=>{
+    $('reason').textContent=reasons[current];
+    $('number').textContent='REASON '+String(n).padStart(2,'0');
+    $('counter').textContent=String(n).padStart(2,'0')+' / 100';
+    $('progressFill').style.width=n+'%';
+    $('nextBtn').textContent=n===100?'FINISH THE 100 ♡':'NEXT REASON →';
+  };
+  if(animated){
+    card.classList.remove('cardEntering'); card.classList.add('cardLeaving');
+    setTimeout(()=>{update();card.classList.remove('cardLeaving');void card.offsetWidth;card.classList.add('cardEntering')},300);
+  }else{update();card.classList.remove('cardEntering');void card.offsetWidth;card.classList.add('cardEntering')}
+}
+function nextReason(){
+  if(current>=99){showFinal100();return;}
+  const next=current+1;
+  current=next;
+  opened.add(current);
+  const milestone=milestoneInfo[next];
+  if(milestone && !milestoneDone.has(next)){
+    pendingMilestone=next; milestoneDone.add(next); showMilestone(next); return;
+  }
+  renderReason(true);
+}
+function showMilestone(n){
+  const m=milestoneInfo[n];
+  setJourney(m.step);
+  if(n===20||n===40){$('interEyebrow').textContent=m.eyebrow;$('interNum').textContent=n;$('interNote').innerHTML='“'+m.note+'”<small>one little note before we keep going ♡</small>';showScreen(m.screen);return;}
+  if(n===50){$('testResult').textContent='';showScreen('testScreen');return;}
+  if(n===60){
+    $('memoryPhoto').onerror=()=>{$('memoryPhoto').style.display='none';$('memoryCaption').textContent='your picture can live here ♡'};
+    $('memoryTitle').textContent='Some moments deserve to stay.';$('memoryText').textContent='Not because they were perfect. Just because they were ours. And this is only the beginning of the memories I want to keep.';
+    showScreen('memoryScreen');return;
+  }
+  if(n===80){buildMuseum();showScreen('museumScreen');return;}
+  if(n===90){buildStars();moonTaps=0;$('nightClue').innerHTML='the last door has a key.<br>tap the moon three times if you want a clue.';showScreen('nightScreen');return;}
+}
+function continueMilestone(){
+  if(pendingMilestone==null)return;
+  const n=pendingMilestone; pendingMilestone=null;
+  openReason(n-1,false);
+}
+function showFinal100(){
+  // Reason 100 is the actual end of the list.
+  // Only AFTER seeing reason 100 do we unlock the secret passcode.
+  setJourney(3);
+  showLock();
+}
+function toggleMusic(){
+  if(audio.paused) startMusic();
+  else{
+    audio.pause();
+    $('musicText').textContent='music';
+    if($('bouquetVinyl')) $('bouquetVinyl').classList.remove('playing');
+  }
+}
+function startMusic(){
+  audio.play().then(()=>{
+    $('musicText').textContent='playing';
+    if($('bouquetScreen').classList.contains('active') && $('bouquetVinyl')) $('bouquetVinyl').classList.add('playing');
+  }).catch(()=>{$('musicText').textContent='music'});
+}
+
+function testAnswer(n){
+  $('testResult').textContent=['nice try. you know that is NOT enough.','closer. but you forgot the stupidly part.','CORRECT. FULL MARKS. ♡'][n];
+}
+function buildMuseum(){
+  const items=[
+    ['assets/yara1.jpg','the beginning ♡'],['assets/yara2.jpg','one of my favorites'],['assets/yara3.jpg','you being you'],
+    ['assets/yara4.jpg','a memory i keep'],['assets/yara5.jpg','this one makes me smile'],['assets/yara6.jpg','still one of my favorites']
+  ];
+  const grid=$('museumGrid');grid.innerHTML='';
+  items.forEach((it,i)=>{
+    const d=document.createElement('div');d.className='polaroidSlot';d.style.setProperty('--r',[-2,2,-1,2,-3,1][i]+'deg');
+    const img=document.createElement('img');img.src=it[0];img.alt=it[1];
+    const ph=document.createElement('div');ph.className='ph';ph.textContent='YOUR PHOTO HERE ♡';
+    img.onerror=()=>img.replaceWith(ph);
+    d.appendChild(img);const p=document.createElement('p');p.textContent=it[1];d.appendChild(p);
+    d.onclick=()=>{if(img.parentNode===d)openPhoto(it[0],it[1])}; grid.appendChild(d);
+  });
+}
+function openPhoto(src,caption){$('viewerImg').src=src;$('viewerImg').onerror=()=>{$('viewerImg').style.display='none'};$('viewerImg').style.display='block';$('viewerCaption').textContent=caption;$('photoViewer').classList.add('show')}
+function closePhotoViewer(e){if(e&&e.target&&e.target.tagName==='IMG')return;$('photoViewer').classList.remove('show')}
+function goToYourTurn(){setJourney(2);showScreen('yourTurnScreen');loadYaraReason()}
+function saveYaraReason(){
+  const value=$('yaraReason').value.trim();
+  if(!value){$('savedReason').innerHTML='<div class="lockMsg">write something first, silly ♡</div>';return}
+  localStorage.setItem('yara_reason_101',value);
+  $('savedReason').innerHTML='<div class="handNote">“'+escapeHtml(value)+'”<small>one reason from Yara ♡</small></div>';
+}
+function loadYaraReason(){const v=localStorage.getItem('yara_reason_101');if(v){$('yaraReason').value=v;$('savedReason').innerHTML='<div class="handNote">“'+escapeHtml(v)+'”<small>one reason from Yara ♡</small></div>'}}
+function continueFromYaraTurn(){
+  pendingMilestone=null;
+  current=80;
+  setJourney(2);
+  renderReason(false);
+  showScreen('reasonsScreen');
+}
+function goToNightDirect(){pendingMilestone=null;setJourney(3);buildStars();showScreen('nightScreen')}
+function buildStars(){const box=$('nightStars');box.innerHTML='';for(let i=0;i<90;i++){const s=document.createElement('i');s.className='star'+(i%17===0?' big':'');s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=(Math.random()*3)+'s';box.appendChild(s)}}
+function tapMoon(){moonTaps++;if(moonTaps===3){$('nightClue').innerHTML='the key is hiding in plain sight.<br><strong style="color:var(--pink);letter-spacing:3px">Y · A · R · A</strong><br>you already knew it, didn’t you?'}}
+function showLock(){setJourney(3);$('lockMsg').textContent='';$('secretInput').value='';showScreen('lockScreen');setTimeout(()=>$('secretInput').focus(),250)}
+function unlockSecret(){
+  const val=$('secretInput').value.trim().toLowerCase();
+  if(val==='yara'){
+    $('lockMsg').textContent='ACCESS GRANTED ♡';
+    setTimeout(()=>showGlitch(),650);
+  }else $('lockMsg').textContent='wrong secret. try again ♡';
+}
+function showGlitch(){setJourney(4);showScreen('glitchScreen');$('waitText').textContent='...wait.';$('glitchDots').textContent='101';setTimeout(()=>{$('waitText').textContent='that was not supposed to be the end.'},1300);setTimeout(()=>show101(),2600)}
+function show101(){setJourney(4);showScreen('screen101')}
+function showFinalEnding(){setJourney(4);showScreen('finalScreen');startMusic();burstHearts()}
+function showBouquet(){
+  setJourney(4);
+  showScreen('bouquetScreen');
+  startMusic();
+  $('bouquetVinyl').classList.add('playing');
+  burstHearts();
+}
+function showLetter(){
+  setJourney(4);
+  showScreen('letterScreen');
+  startMusic();
+  $('bouquetVinyl').classList.remove('playing');
+  burstHearts();
+}
+function escapeHtml(str){const d=document.createElement('div');d.textContent=str;return d.innerHTML}
+function createHeart(){const h=document.createElement('div');h.className='heart';h.textContent=Math.random()>.5?'♡':'♥';h.style.left=Math.random()*100+'vw';h.style.fontSize=10+Math.random()*18+'px';h.style.animationDuration=8+Math.random()*9+'s';$('hearts').appendChild(h);setTimeout(()=>h.remove(),19000)}
+function createParticle(){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';p.style.animationDuration=3+Math.random()*5+'s';p.style.animationDelay=Math.random()*4+'s';$('particles').appendChild(p)}
+function burstHearts(){for(let i=0;i<45;i++)setTimeout(createHeart,i*45)}
+function showToast(t){const x=$('toast');x.textContent=t;x.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>x.classList.remove('show'),2600)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){$('letterOverlay').classList.remove('show');$('photoViewer').classList.remove('show')}
+});
+setInterval(createHeart,1100);for(let i=0;i<7;i++)setTimeout(createHeart,i*250);for(let i=0;i<25;i++)createParticle();
+buildEnvelopes();
+</script>
+</body>
+</html>
